@@ -1,11 +1,23 @@
-import { config, fields, collection } from "@keystatic/core";
+import { config, fields, collection, singleton } from "@keystatic/core";
 
 export default config({
   storage: {
     kind: "cloud"
   },
   cloud: {
-    project: 'gingerich/portfolio',
+    project: "gingerich/portfolio"
+  },
+  singletons: {
+    homePage: singleton({
+      label: "Home Page",
+      path: "src/content/home-page/",
+      schema: {
+        heroIntro: fields.document({
+          label: "Hero intro text",
+          formatting: true
+        })
+      },
+    }),
   },
   collections: {
     posts: collection({
