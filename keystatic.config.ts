@@ -3,25 +3,75 @@ import { config, fields, collection } from "@keystatic/core";
 export default config({
   storage: {
     kind: "local",
+    // repo: `gingerich/portfolio`
   },
   collections: {
     posts: collection({
-      label: "Posts",
+      label: "Blog",
       slugField: "title",
-      path: "src/content/posts/*",
+      path: "src/content/blog/**/",
+      entryLayout: "content",
       format: { contentField: "content" },
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
-        content: fields.document({
+        description: fields.text({ label: "Description" }),
+        date: fields.date({ label: "Publish Date", defaultValue: { kind: "today" } }),
+        draft: fields.checkbox({ label: "Draft" }),
+        content: fields.mdx({
           label: "Content",
-          formatting: true,
-          dividers: true,
-          links: true,
-          images: {
-            directory: "src/assets/images/posts",
-            publicPath: "../../assets/images/posts/",
-          },
+          extension: "md",
+          options: {
+            divider: true,
+            link: true,
+            image: {
+              directory: 'src/assets/images/blog',
+              publicPath: '../../../assets/images/blog/',
+            }
+          }
         }),
+      },
+    }),
+    projects: collection({
+      label: "Projects",
+      slugField: "title",
+      path: "src/content/projects/**/",
+      entryLayout: "content",
+      format: { contentField: "content" },
+      schema: {
+        title: fields.slug({ name: { label: "Title" } }),
+        description: fields.text({ label: "Description" }),
+        date: fields.date({ label: "Publish Date", defaultValue: { kind: "today" } }),
+        draft: fields.checkbox({ label: "Draft" }),
+        demoURL: fields.url({ label: "Demo URL" }),
+        repoURL: fields.url({ label: "Repo URL" }),
+        content: fields.mdx({
+          label: "Content",
+          extension: "md",
+          options: {
+            divider: true,
+            link: true,
+            image: {
+              directory: 'src/assets/images/projects',
+              publicPath: '../../../assets/images/projects/',
+            }
+          }
+        }),
+      },
+    }),
+    work: collection({
+      label: "Work",
+      slugField: "company",
+      path: "src/content/work/*",
+      format: { contentField: "content" },
+      schema: {
+        company: fields.slug({ name: { label: "Company" } }),
+        role: fields.text({ label: "Role" }),
+        dateStart: fields.date({ label: "Start Date" }),
+        dateEnd: fields.date({ label: "End Date" }),
+        content: fields.mdx({
+          label: "Content",
+          extension: "md"
+       }),
       },
     }),
   },

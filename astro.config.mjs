@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-import mdx from "@astrojs/mdx";
+import mdx from '@astrojs/mdx';
 import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import tailwind from "@astrojs/tailwind";
@@ -8,8 +8,8 @@ import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://marlincodes.vercel.app",
-  integrations: [mdx(), react(), sitemap(), tailwind(), keystatic()],
+  site: "https://marlingingerich.com",
+  integrations: [mdx(), react(), sitemap(), tailwind()].concat(process.env.DISABLE_KEYSTATIC ? [] : keystatic()),
   output: "hybrid",
   adapter: vercel()
 });
