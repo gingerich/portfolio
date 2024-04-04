@@ -1,12 +1,12 @@
 ---
 import { getCollection } from "astro:content";
-import { DocumentRenderer } from "@keystatic/core/renderer"
+import { DocumentRenderer } from "@keystatic/core/renderer";
 import Container from "@components/Container.astro";
 import PageLayout from "@layouts/PageLayout.astro";
 import ArrowCard from "@components/ArrowCard.astro";
 import Link from "@components/Link.astro";
 import { dateRange } from "@lib/utils";
-import { reader } from "@lib/keystatic"
+import { reader } from "@lib/keystatic";
 import { SITE, HOME, SOCIALS } from "@consts";
 
 const blog = (await getCollection("blog"))
@@ -30,8 +30,8 @@ const work = await Promise.all(
   })
 );
 
-const home = await reader.singletons.homePage.readOrThrow()
-const heroIntro = await home.heroIntro()
+const home = await reader.singletons.homePage.readOrThrow();
+const heroIntro = await home.heroIntro();
 
 ---
 

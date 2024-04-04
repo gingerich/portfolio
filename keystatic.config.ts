@@ -38,8 +38,8 @@ export default config({
             divider: true,
             link: true,
             image: {
-              directory: 'src/assets/images/blog',
-              publicPath: '../../../assets/images/blog/',
+              directory: "src/assets/images/blog",
+              publicPath: "../../../assets/images/blog/",
             }
           }
         }),
@@ -65,8 +65,8 @@ export default config({
             divider: true,
             link: true,
             image: {
-              directory: 'src/assets/images/projects',
-              publicPath: '../../../assets/images/projects/',
+              directory: "src/assets/images/projects",
+              publicPath: "../../../assets/images/projects/",
             }
           }
         }),
