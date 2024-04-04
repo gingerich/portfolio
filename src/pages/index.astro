@@ -78,7 +78,7 @@ const heroIntro = await home.heroIntro();
           {work.map(entry => (
             <li>
               <div class="text-sm opacity-75 uppercase mb-2">
-                {dateRange(entry.data.dateStart, entry.data.dateEnd)}
+                {dateRange(entry.data.dateStart, entry.data.dateEnd?.value ?? "Current")}
               </div>
               <div class="font-semibold text-black dark:text-white">
                 {entry.data.company}

@@ -1,10 +1,11 @@
 ---
-company: "Bonfire"
-role: "Senior Software Developer / Staff Software Developer"
-dateStart: "10/30/2017"
-dateEnd: "09/10/2022"
+company: Bonfire
+role: Senior Software Developer / Staff Software Developer
+dateStart: 2017-10-30
+dateEnd:
+  discriminant: false
+  value: 2022-09-09
 ---
-
 Championed the formation of a Platform team focussed on providing a self-service platform empowering developers to adopt full-lifecycle ownership of applications.
 
 Pioneered incremental migration path from legacy PHP/Angular stack to React and Node.js, unlocking significant increase in engineering velocity.

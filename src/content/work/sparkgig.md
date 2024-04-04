@@ -1,8 +1,9 @@
 ---
 company: "SparkGig"
 role: "Developer / CTO"
-dateStart: "09/01/2014"
-dateEnd: "10/31/2016"
+dateStart: 2014-09-01
+dateEnd:
+  value: 2016-10-31
 ---
 
 Worked iteratively to deliver core platform features including artist profiles, search, booking flow and payments, job scheduling, etc.

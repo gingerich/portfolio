@@ -1,9 +1,9 @@
 import { config, fields, collection, singleton } from "@keystatic/core";
 
 export default config({
-  storage: {
-    kind: "cloud"
-  },
+  storage: process.env.NODE_ENV === "development"
+    ? { kind: "local" }
+    : { kind: "cloud" },
   cloud: {
     project: "gingerich/portfolio"
   },
@@ -29,7 +29,11 @@ export default config({
       schema: {
         title: fields.slug({ name: { label: "Title" } }),
         description: fields.text({ label: "Description" }),
-        date: fields.date({ label: "Publish Date", defaultValue: { kind: "today" } }),
+        date: fields.date({
+          label: "Publish Date",
+          defaultValue: { kind: "today" },
+          validation: { isRequired: true }
+        }),
         draft: fields.checkbox({ label: "Draft" }),
         content: fields.mdx({
           label: "Content",
@@ -80,12 +84,18 @@ export default config({
       schema: {
         company: fields.slug({ name: { label: "Company" } }),
         role: fields.text({ label: "Role" }),
-        dateStart: fields.date({ label: "Start Date" }),
-        dateEnd: fields.date({ label: "End Date" }),
+        dateStart: fields.date({ label: "Start Date", validation: { isRequired: true } }),
+        dateEnd: fields.conditional(
+          fields.checkbox({ label: "Currently employed here", defaultValue: false }),
+          {
+            true: fields.empty(),
+            false: fields.date({ label: "End Date", validation: { isRequired: true } })
+          }
+        ),
         content: fields.mdx({
           label: "Content",
           extension: "md"
-       }),
+        }),
       },
     }),
   },

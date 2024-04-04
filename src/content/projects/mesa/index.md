@@ -1,7 +1,7 @@
 ---
 title: "Mesa"
 description: "A sensible component framework for anything"
-date: "Nov 19 2019"
+date: 2019-11-19
 repoURL: "https://github.com/gingerich/mesa"
 ---
 
